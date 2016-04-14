@@ -4,9 +4,9 @@ use LastFmApi\Api\GeoAPI;
 use LastFmApi\Api\ArtistApi;
 
 class LastFmService {
-  public function __construct()
+  public function __construct($apikey)
     {
-        $this->apiKey = '2bd52b75c11bb3a8d3c6c3cebb5a6f8a';
+        $this->apiKey = $apikey;
         $auth = new AuthApi('setsession', array('apiKey' => $this->apiKey));
         $this->geoAPI = new GeoAPI($auth);
         $this->artistAPI = new ArtistApi($auth);
@@ -34,7 +34,7 @@ class LastFmService {
 
     public function getArtistTopTracks($artist) {
       $tracks = $this->artistAPI->getTopTracks(array("artist" => $artist));
-            
+
       return $tracks;
     }
 
