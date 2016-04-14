@@ -1,0 +1,24 @@
+{% extends "base_template.html" %}
+{% block content %}
+    <div class="page-header">Top artists for "{{ country }}"</div>
+
+    {% for artist in artists %}
+
+    <div class="row">
+        <div class="col-xs-2 box">
+          <a href="?artist={{ artist.name }}" class="thumbnail"><img src='{{ artist.images.medium }}' height='100' width='100'/></a></div>
+        <div class="col-xs-2 box">{{ artist.name }}</div>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+{% block footer %}
+<nav>
+<ul class="pagination">
+  {% for i in 1..num_pages %}
+  <li><a href="?country={{country}}&page={{i}}">{{i}}</a></li>
+  {% endfor %}
+
+</ul>
+</nav>
+{% endblock %}
