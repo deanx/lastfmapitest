@@ -1,6 +1,12 @@
 {
     "require": {
+        "php": ">=5.3.3",
         "matto1990/lastfm-api": "^1.2",
         "twig/twig": "~1.0"
+    },
+
+    "require-dev": {
+        "php": ">=5.3.3",
+        "phpunit/phpunit": "~4.8"
     }
 }
