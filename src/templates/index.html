@@ -16,7 +16,12 @@
 <nav>
 <ul class="pagination">
   {% for i in 1..num_pages %}
-  <li><a href="?country={{country}}&page={{i}}">{{i}}</a></li>
+
+  <li 
+  {% if current_page == i %}
+  class='active'
+  {% endif %}
+  ><a href="?country={{country}}&page={{i}}">{{i}}</a></li>
   {% endfor %}
 
 </ul>

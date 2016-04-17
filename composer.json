@@ -1,7 +1,7 @@
 {
     "require": {
         "php": ">=5.3.3",
-        "matto1990/lastfm-api": "^1.2",
+        "deanx/lastfm-api": ">=1.2",
         "twig/twig": "~1.0"
     },
 

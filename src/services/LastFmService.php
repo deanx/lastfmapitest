@@ -15,16 +15,26 @@ class LastFmService {
 
     public function getTopArtistsByCountry($country, $page = 1, $limit = 5)
     {
-        $topArtists = $this->geoAPI->getTopArtists(array("country" => $country, "page" => $page, "limit" => $limit));
+        $topArtists = $this->geoAPI->getTopArtists(array("country" => $country,
+        "page" => $page, "limit" => $limit));
 
+        $paginatedTopArtists = $this->getCorrectArtitsByLimit($topArtists, $page, $limit);
         $artistsParser = function($artist) {
           return array("name" => $artist["name"], "images" => $artist["image"]);
         };
 
-        $artistsParsed = is_array($topArtists) ? array_map($artistsParser, $topArtists) : [];
+        $artistsParsed = is_array($paginatedTopArtists) ? array_map($artistsParser, $paginatedTopArtists) : [];
+
+        $artistsParsed = ['artists' => $artistsParsed, 'attributes' => $topArtists['attributes']];
+        
         return $artistsParsed;
     }
 
+    private function getCorrectArtitsByLimit($artistsArray, $page, $limit) {
+      if(count($artistsArray) === $limit || !is_array($artistsArray)) return $artistsArray;
+      else return array_slice($artistsArray, $limit * -1, $limit);
+
+    }
     private function getArtistInfo($artist) {
       $artistInfo = $this->artistAPI->getInfo(array("artist" => $artist));
       return $artistInfo;

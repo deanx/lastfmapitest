@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9320723a5fb8fc5f323ad3b355b519bb",
-    "content-hash": "208e860a418814ad2c031ca133113281",
+    "hash": "026b520683fafddc03f44cff7a953276",
+    "content-hash": "2fa6219bdb54cf287d0a4c4a3cc71977",
     "packages": [
         {
-            "name": "matto1990/lastfm-api",
+            "name": "deanx/lastfm-api",
             "version": "v1.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/matto1990/PHP-Last.fm-API.git",
+                "url": "https://github.com/deanx/PHP-Last.fm-API.git",
                 "reference": "1cf9a8947bf756beb876d5f8e2af398058805e08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matto1990/PHP-Last.fm-API/zipball/1cf9a8947bf756beb876d5f8e2af398058805e08",
+                "url": "https://api.github.com/repos/deanx/PHP-Last.fm-API/zipball/1cf9a8947bf756beb876d5f8e2af398058805e08",
                 "reference": "1cf9a8947bf756beb876d5f8e2af398058805e08",
                 "shasum": ""
             },

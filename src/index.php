@@ -12,18 +12,19 @@ $country = $_GET['country'];
 
 $page = (int)$_GET['page'] ?: 1;
 
-define(MAX_COUNTRY_ITEMS, 50);
 define(MAX_ARTISTS_PER_PAGE, 5);
 
 $loader = new Twig_Loader_Filesystem('./templates');
 $twig = new Twig_Environment($loader);
 
-
 if($country) {
 $topArtists = $last->getTopArtistsByCountry($country, $page, MAX_ARTISTS_PER_PAGE);
+$numPages = $topArtists['attributes']['totalPages'] > 100 ? 100 : $topArtists['attributes']['totalPages'];
+
 echo $twig->render('index.html', array('country' => $country,
-      'artists' => $topArtists, 'num_pages' => MAX_COUNTRY_ITEMS / MAX_ARTISTS_PER_PAGE));
-} elseif($artist) {
+      'artists' => $topArtists['artists'], 'num_pages' => $numPages, 'current_page' => $page));
+}
+elseif($artist) {
   $artistTracks = $last->getArtistTopTracks($artist);
   echo $twig->render('artist.html', array('artist' => $artist,
         'tracks' => $artistTracks));
