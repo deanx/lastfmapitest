@@ -1,7 +1,9 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
-require_once(__DIR__ . '/services/lastfm.php');
+require_once(__DIR__ . '/services/LastFmService.php');
 require_once(__DIR__ . '/conf/config.php');
+
+use services\LastFmService;
 
 $last = new LastFmService(APIKEY);
 

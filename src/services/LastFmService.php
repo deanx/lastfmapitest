@@ -1,4 +1,5 @@
 <?php
+namespace services;
 use LastFmApi\Api\AuthApi;
 use LastFmApi\Api\GeoAPI;
 use LastFmApi\Api\ArtistApi;
@@ -20,7 +21,8 @@ class LastFmService {
           return array("name" => $artist["name"], "images" => $artist["image"]);
         };
 
-        return array_map($artistsParser, $topArtists);
+        $artistsParsed = is_array($topArtists) ? array_map($artistsParser, $topArtists) : [];
+        return $artistsParsed;
     }
 
     private function getArtistInfo($artist) {
